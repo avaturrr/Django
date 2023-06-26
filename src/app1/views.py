@@ -1,4 +1,6 @@
+import csv
 import datetime
+import os.path
 
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -21,3 +23,18 @@ def even_number(request, word):
         return HttpResponse(new_word)
     else:
         return redirect("home_page")
+
+
+def save_name(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        lastname = request.POST.get("lastname")
+        age = request.POST.get("age")
+        if not os.path.exists("/home/user/pythonProject/DjangoKS/src/app1/user_data.csv"):
+            with open("/home/user/pythonProject/DjangoKS/src/app1/user_data.csv", "w") as my_file:
+                csvwriter = csv.writer(my_file)
+                csvwriter.writerow(["name", "lastname", "age"])
+        with open("/home/user/pythonProject/DjangoKS/src/app1/user_data.csv", "a") as my_file:
+            csvwriter = csv.writer(my_file)
+            csvwriter.writerow([name, lastname, age])
+        return HttpResponse("SAVED")
