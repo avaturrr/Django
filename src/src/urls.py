@@ -17,10 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from app1.views import get_data, number_2
+from app1.views import get_data, number_2, even_number
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", get_data),
-    path("number/<int:number>", number_2)
+    path("", get_data, name="home_page"),
+    path("number/<int:number>", number_2),
+    path("my_word/<str:word>", even_number, name="even_number"),
 ]
