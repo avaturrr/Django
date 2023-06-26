@@ -17,6 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from app1.views import get_data, number_2
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("", get_data),
+    path("number/<int:number>", number_2)
 ]
