@@ -4,6 +4,7 @@ import os.path
 
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.template import loader
 
 
 # Create your views here.
@@ -38,3 +39,9 @@ def save_name(request):
             csvwriter = csv.writer(my_file)
             csvwriter.writerow([name, lastname, age])
         return HttpResponse("SAVED")
+    else:
+        template = loader.get_template("django_04.html")
+        response = template.render({}, request)
+        return HttpResponse(response)
+
+
