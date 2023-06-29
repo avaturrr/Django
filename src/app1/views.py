@@ -45,3 +45,14 @@ def save_name(request):
         return HttpResponse(response)
 
 
+def full_form(request):
+    if request.method == "GET":
+        template = loader.get_template("django_06_form.html")
+        response = template.render({}, request)
+        return HttpResponse(response)
+    else:
+        name = request.POST.get("name")
+        lastname = request.POST.get("lastname")
+        age = request.POST.get("age")
+        return HttpResponse(f"name {name}, lastname {lastname}, age {age}")
+
