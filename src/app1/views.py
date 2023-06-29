@@ -6,6 +6,8 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template import loader
 
+from app1.forms import UserForm
+
 
 # Create your views here.
 def get_data(request):
@@ -51,8 +53,15 @@ def full_form(request):
         response = template.render({}, request)
         return HttpResponse(response)
     else:
-        name = request.POST.get("name")
-        lastname = request.POST.get("lastname")
-        age = request.POST.get("age")
-        return HttpResponse(f"name {name}, lastname {lastname}, age {age}")
+        form = UserForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            name = cd.get("name")
+            lastname = cd.get("lastname")
+            age = cd.get("age")
+            content = {"name": name, "lastname": lastname, "age": age}
+            return render(request, "django_06_display.html", content)
+        else:
+            errors = form.errors
+            return HttpResponse(f'errors {errors}')
 
