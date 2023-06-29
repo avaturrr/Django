@@ -49,9 +49,7 @@ def save_name(request):
 
 def full_form(request):
     if request.method == "GET":
-        template = loader.get_template("django_06_form.html")
-        response = template.render({}, request)
-        return HttpResponse(response)
+        return render(request, "django_06_form.html", {"form":UserForm()})
     else:
         form = UserForm(request.POST)
         if form.is_valid():
