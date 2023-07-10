@@ -18,8 +18,9 @@ from django.contrib import admin
 from django.urls import path
 
 from app1.views import get_data, number_2, even_number, save_name, full_form
-from school.views import all_groups
+from school.views import all_groups, all_students_of_group
 
 urlpatterns = [
     path("groups/", all_groups, name="groups"),
+    path("students/", all_students_of_group, name="students"),
 ]

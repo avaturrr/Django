@@ -1,0 +1,7 @@
+{% extends "main.html"%}
+{% block content %}
+    {% for st in students %}
+        <p>{{st.name}}</p><br>
+        <p>{{st.lastname}}</p><br>
+    {% endfor %}
+{% endblock%}
