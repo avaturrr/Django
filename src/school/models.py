@@ -21,3 +21,11 @@ class Diary(models.Model):
     grade_point_average = models.FloatField()
     student = models.OneToOneField("Student", null=True, on_delete=models.SET_NULL, related_name="diary")
 
+
+class Book(models.Model):
+    title = models.CharField(max_length=100)
+    pages = models.IntegerField()
+    student = models.ManyToManyField("Student", related_name="book")
+
+    def __str__(self):
+        return f"{self.id} - {self.title}"
