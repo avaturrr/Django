@@ -15,3 +15,9 @@ class Student(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.lastname}"
+
+
+class Diary(models.Model):
+    grade_point_average = models.FloatField()
+    student = models.OneToOneField("Student", null=True, on_delete=models.SET_NULL, related_name="diary")
+
