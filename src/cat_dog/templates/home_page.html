@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "main.html"%}
 
-</body>
-</html>
+{% block content %}
+    <form action="{% url 'catdog'%}" method="post">
+        <p><button name="cat">I love cats!</button></p>
+        <p><button name="dog">I love dogs!</button></p>
+    </form>
+{% endblock %}
