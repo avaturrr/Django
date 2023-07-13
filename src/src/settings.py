@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "app2",
     "school",
     "cat_dog",
+    'bootstrap5',
 ]
 
 MIDDLEWARE = [
