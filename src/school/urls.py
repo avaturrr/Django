@@ -22,5 +22,5 @@ from school.views import all_groups, all_students_of_group
 
 urlpatterns = [
     path("groups/", all_groups, name="groups"),
-    path("students/", all_students_of_group, name="students"),
+    path("students/<int:group_id>", all_students_of_group, name="students"),
 ]

@@ -10,5 +10,6 @@ def all_groups(request):
 
 
 def all_students_of_group(request, group_id):
+    group = Group.objects.get(id=group_id)
     gr_students = Student.objects.filter(group_id=group_id)
-    return render(request, "list_st.html", context={"students" : gr_students})
+    return render(request, "list_st.html", context={"students" : gr_students, 'group': group})
