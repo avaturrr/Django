@@ -130,3 +130,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 URL_FOR_CATS = "https://api.thecatapi.com/v1/images/search"
 URL_FOR_DOGS = "https://dog.ceo/api/breeds/image/random"
+
+EMAIL_HOST =
+EMAIL_PORT, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_USE_SSL
