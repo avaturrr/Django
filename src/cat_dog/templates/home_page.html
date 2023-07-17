@@ -2,6 +2,7 @@
 
 {% block content %}
     <form action="{% url 'catdog'%}" method="post">
+        {% csrf_token %}
         <p><button class="btn btn-info" name="cat">I love cats!</button></p>
         <p><button class="btn btn-info" name="dog">I love dogs!</button></p>
     </form>

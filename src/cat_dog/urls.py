@@ -18,8 +18,9 @@ from django.contrib import admin
 from django.urls import path, include
 
 from app1.views import get_data, number_2, even_number, save_name, full_form
-from cat_dog.views import catdog_home
+from cat_dog.views import catdog_home, save_catdog
 
 urlpatterns = [
     path('', catdog_home, name="catdog"),
+    path("/save", save_catdog, name="save_catdog")
 ]

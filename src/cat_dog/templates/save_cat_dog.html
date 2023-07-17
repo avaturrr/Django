@@ -4,6 +4,6 @@
 <p>picture <img src="{{ url }}"></p>
 <form action="{% url 'save_catdog'%}" method="post">
     {% csrf_token %}
-    <p><button class="btn btn-info" name="cat">SAVE</button></p>
+    <p>SAVED</p>
 </form>
 {% endblock %}
