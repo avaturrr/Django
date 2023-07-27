@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 import requests
 
+from cat_dog.forms import PetFilter
 from cat_dog.models import AnimalImage
 from src.settings import URL_FOR_DOGS, URL_FOR_CATS
 
@@ -16,7 +17,8 @@ from src.settings import URL_FOR_DOGS, URL_FOR_CATS
 # Create your views here.
 def catdog_home(request):
     if request.method == "GET":
-        return render(request, "home_page.html")
+        data = {"form": PetFilter()}
+        return render(request, "home_page.html", context=data)
     else:
         request.session.set_expiry(30)
         if "dog" in request.POST:
@@ -54,11 +56,22 @@ def save_catdog(request):
 
 def send(request):
     url = request.POST.get("url")
+    mail_for_send = request.POST.get("mail")
     send_mail(
         "Subject here",
-        f"Here is the message.{url}",
+        f"Это не фишинг {url}",
         EMAIL_HOST_USER,
-        ["kseniya.satsevich@gmail.com"],
+        [mail_for_send],
         fail_silently=False,
     )
-    return HttpResponse('email sended')
+    return render(request, "sended_page.html", {"url": url})
+
+
+def pet_filter(request):
+    if request.method == "POST":
+        form = PetFilter(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            pets = AnimalImage.objects.filter(spieces=data.get("pet"), type=data.get("type_img"))
+            return render(request, "list_pets.html", {"pets" : pets})
+

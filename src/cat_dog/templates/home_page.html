@@ -6,4 +6,9 @@
         <p><button class="btn btn-info" name="cat">I love cats!</button></p>
         <p><button class="btn btn-info" name="dog">I love dogs!</button></p>
     </form>
+    <form action="{% url 'pet_filter'%}" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-info">show pet</button>
+    </form>
 {% endblock %}

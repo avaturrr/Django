@@ -18,10 +18,11 @@ from django.contrib import admin
 from django.urls import path, include
 
 from app1.views import get_data, number_2, even_number, save_name, full_form
-from cat_dog.views import catdog_home, save_catdog, send
+from cat_dog.views import catdog_home, save_catdog, send, pet_filter
 
 urlpatterns = [
     path('', catdog_home, name="catdog"),
-    path("/save", save_catdog, name="save_catdog"),
-    path("/send_mail", send, name="send_mail")
+    path("save", save_catdog, name="save_catdog"),
+    path("send_mail", send, name="send_mail"),
+    path("pet_filter", pet_filter, name="pet_filter")
 ]

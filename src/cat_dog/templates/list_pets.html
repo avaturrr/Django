@@ -1,0 +1,9 @@
+{% extends "main_cat_dog.html" %}
+
+{% block content %}
+<p>list of saved pages </p>
+{% for pet in pets%}
+  <p><a href = "{{pet.url}}">{{pet.url}}</a></p>
+  <p><img src="{{pet.url}}" height="100"></p>
+{%endfor%}
+{% endblock %}
