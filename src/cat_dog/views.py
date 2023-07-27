@@ -1,11 +1,16 @@
 import datetime
 
+from django.conf.global_settings import EMAIL_HOST_USER
 from django.core.mail import send_mail
+from django.http import HttpResponse
 from django.shortcuts import render
 import requests
 
 from cat_dog.models import AnimalImage
-from src.settings import URL_FOR_CATS, URL_FOR_DOGS
+from src.settings import URL_FOR_DOGS, URL_FOR_CATS
+
+
+# from src.settings import URL_FOR_CATS, URL_FOR_DOGS
 
 
 # Create your views here.
@@ -48,10 +53,12 @@ def save_catdog(request):
 
 
 def send(request):
+    url = request.POST.get("url")
     send_mail(
         "Subject here",
-        "Here is the message.",
-        "from@example.com",
-        ["to@example.com"],
+        f"Here is the message.{url}",
+        EMAIL_HOST_USER,
+        ["kseniya.satsevich@gmail.com"],
         fail_silently=False,
     )
+    return HttpResponse('email sended')

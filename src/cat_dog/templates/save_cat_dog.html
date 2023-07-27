@@ -2,13 +2,11 @@
 
 {% block content %}
 <p>picture <img src="{{ url }}"></p>
-<form action="{% url 'send_catdog'%}" method="post">
+<form action="{% url 'send_mail'%}" method="post">
     {% csrf_token %}
-    <p>SAVED</p>
-    <form action="{% url 'send_mail'%}" method="post">
-    {% csrf_token %}
-    <p><input type="email" name="mail" ></p>
-    <p><button type="submit" name=""></button></p>
+    <h3>enter email for send</h3>
+    <input type="email" name="mail">
+    <button type="submit" name="url" value="{{ url }}" class="btn btn-outline-warning">send link to this image</button>
 </form>
 </form>
 {% endblock %}

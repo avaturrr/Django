@@ -15,7 +15,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.core.mail import
 from django.urls import path, include
 
 from app1.views import get_data, number_2, even_number, save_name, full_form
@@ -24,5 +23,5 @@ from cat_dog.views import catdog_home, save_catdog, send
 urlpatterns = [
     path('', catdog_home, name="catdog"),
     path("/save", save_catdog, name="save_catdog"),
-    path("/send_mail", send, name="send_name")
+    path("/send_mail", send, name="send_mail")
 ]
